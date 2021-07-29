@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * data:; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300italic,300,400italic,500,700,700italic,500italic' rel='stylesheet' type='text/css'>
+
+
+    <link rel="stylesheet" href="https://unpkg.com/onsenui/css/onsenui.css" type="text/css" media="all" />
+ <!-- id theme to have an option to enable and disable dark mode -->
+    <link rel="stylesheet" id = "theme" href="https://unpkg.com/onsenui/css/onsen-css-components.css">
+
+
+    <script src="https://unpkg.com/onsenui"></script>
+<script src="my-app.js"></script>
+<script src="calculations.js"></script>
+
+  </head>
+  <body>
+
+
+
+<ons-page>
+  <ons-tabbar swipeable position="auto">
+    <ons-tab page="tab1.html" id="cars" label="Cars" icon="fa-car, material:fa-car"  active></ons-tab>
+    <ons-tab page="tab2.html" id="calculator" label="Calculator" icon="fa-file" active-icon="md-file"></ons-tab>
+    <ons-tab page="tab3.html" id="settings" label="Settings" icon="md-settings" active-icon="md-settings"></ons-tab>
+  </ons-tabbar>
+</ons-page>
+
+  <template id="tab1.html">
+    <ons-page id="Tab1">
+      <div id ="list_of_cars"></div>      
+    </ons-page>
+  </template>
+
+  <template id="tab2.html">
+    <ons-page id="Tab2">
+      <ons-page>
+        <div style="text-align: center; margin-top: 30px;">
+          <p>
+            <ons-input id="amount" modifier="underbar" placeholder="Amount" float></ons-input>
+          </p>
+          <p>
+            <ons-input id="months" modifier="underbar"  placeholder="Months" float></ons-input>
+          </p>
+          <p style="margin-top: 30px;">
+            <ons-button onclick="calculate()" id="calculate-button">calculate</ons-button>
+          </p>
+        </div>    
+      </ons-page>
+    </ons-page>
+      </template>
+
+      <template id="tab3.html">
+            <ons-page id="Tab3">
+              <ons-if platform="android">
+                <ons-icon icon="md-android" size="50px" style="color: #A5C83A"></ons-icon>
+                This is Android
+                </ons-if>        
+                <ons-if platform="ios other">
+                  <ons-icon icon="md-apple" size="50px" style="color: #9E9D9D"></ons-icon>
+                  This is iOS
+                </ons-if>
+                <ons-list>
+                  <ons-list-header>Settings</ons-list-header>
+                  <ons-list-item>
+                  <div class="center">
+                    Dark mode
+                  </div>
+                  <div class="right">
+                    <ons-switch id="switch-dark"></ons-switch>
+                  </div>
+                  </ons-list-item>
+                  <!--  -->
+                  <ons-list-item>
+                  <div class="center">
+                    Round-up values
+                  </div>
+                  <div class="right">
+                    <ons-switch id="switch-roundup"></ons-switch>
+                  </div>
+                  </ons-list-item>
+                  <!--  -->
+                  <ons-list-item>
+                    <div class="center">
+                      Only show cars from last 7 days
+                    </div>
+                    <div class="right">
+                      <ons-switch id="switch-7days"></ons-switch>
+                    </div>
+                  </ons-list-item>                  
+                </ons-list>
+              </p>
+            </ons-page>
+          </template>
+    
+          <script>
+document.addEventListener("DOMContentLoaded", theDomHasLoaded, false);
+window.addEventListener("load", pageFullyLoaded, false);
+
+function theDomHasLoaded(e) {
+    // do something
+}
+
+function pageFullyLoaded(e) {
+    
+    var roundUpSwitchChecked = document.getElementById('switch-roundup').checked;
+    var roundUpSwitchChecked = document.getElementById('switch-dark').checked;
+    var roundUpSwitchChecked = document.getElementById('switch-7days').checked;
+
+// listen to switch-dark
+    document.getElementById("switch-dark").addEventListener('click', function(e){
+// console log when clicked
+console.log('dark-clicked', e);
+// change the theme when switch checked
+if (document.getElementById("switch-dark").checked == true)
+{document.querySelector('#theme').setAttribute('href', 'https://unpkg.com/onsenui/css/dark-onsen-css-components.css');}
+else if (document.getElementById("switch-dark").checked == false)
+{document.querySelector('#theme').setAttribute('href', 'https://unpkg.com/onsenui/css/onsen-css-components.css');}
+
+
+});
+
+document.getElementById("switch-roundup").addEventListener('click', function(e){
+console.log('roundup-clicked', e);
+
+});
+
+
+
+};
+</script>
+
+</body>
+</html>

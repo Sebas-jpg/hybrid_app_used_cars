@@ -1,0 +1,18 @@
+{
+  "name": "usedcars",
+  "version": "1.0.0",
+  "description": "PPW1_assessment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bh38jt",
+  "license": "ISC",
+  "dependencies": {
+    "onsenui": "^2.10.10"
+  },
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "qunit": "^2.9.3"
+  }
+}
